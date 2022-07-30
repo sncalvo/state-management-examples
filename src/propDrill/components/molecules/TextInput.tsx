@@ -16,7 +16,8 @@ export const TextInput = ({ name, label, value, onChange, error }: Props) => {
       </label>
       <input
         className={clsx(
-          'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline',
+          'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3',
+          'leading-tight focus:outline-none focus:shadow-outline',
           error && 'border-red-500'
         )}
         id={name}
