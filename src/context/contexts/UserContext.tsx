@@ -8,7 +8,7 @@ const useUser = () => {
   return userState;
 };
 
-const useUserContext = () => {
+const useUserStore = () => {
   return useContext(UserContext);
 };
 
@@ -18,4 +18,4 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
   return <UserContext.Provider value={userState}>{children}</UserContext.Provider>;
 };
 
-export { UserProvider, useUser, useUserContext };
+export { UserProvider, useUser, useUserStore };

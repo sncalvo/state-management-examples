@@ -1,10 +1,8 @@
-import { useUserContext } from '../../contexts/UserContext';
+import { useUserStore } from '../../contexts/UserContext';
 import { Button } from '../atoms';
 
 export const Navbar = () => {
-  const [user, setUser] = useUserContext();
-
-  console.log(user);
+  const { user, setUser } = useUserStore((store) => store);
 
   return (
     <div className="flex justify-between items-center p-4 bg-gray-200">

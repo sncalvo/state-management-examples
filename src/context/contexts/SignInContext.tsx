@@ -38,8 +38,8 @@ const SignInContextProvider = ({ children }: { children: ReactNode }) => {
   return <SignInContext.Provider value={value}>{children}</SignInContext.Provider>;
 };
 
-const useSignInContext = () => {
+const useSignInStore = () => {
   return useContext(SignInContext);
 };
 
-export { SignInContextProvider, useSignInContext };
+export { SignInContextProvider, useSignInStore };

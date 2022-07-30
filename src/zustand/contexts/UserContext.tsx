@@ -1,21 +1,11 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import create from 'zustand';
 
-const UserContext = createContext<[string | null, (user: string | null) => void]>([null, () => {}]);
+interface UserState {
+  user: string | null;
+  setUser: (user: string | null) => void;
+}
 
-const useUser = () => {
-  const userState = useState<string | null>(null);
-
-  return userState;
-};
-
-const useUserContext = () => {
-  return useContext(UserContext);
-};
-
-const UserProvider = ({ children }: { children: ReactNode }) => {
-  const userState = useUser();
-
-  return <UserContext.Provider value={userState}>{children}</UserContext.Provider>;
-};
-
-export { UserProvider, useUser, useUserContext };
+export const useUserStore = create<UserState>((set) => ({
+  user: null,
+  setUser: (user) => set((state) => ({ ...state, user })),
+}));

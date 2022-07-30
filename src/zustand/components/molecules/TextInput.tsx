@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { useSignInContext } from '../../contexts/SignInContext';
+import { useMemo } from 'react';
+import { useSignInStore } from '../../contexts/SignInContext';
 
 interface Props {
   name: 'email' | 'password';
@@ -12,9 +13,11 @@ function capitalize(word: 'email' | 'password') {
 }
 
 export const TextInput = ({ name, label }: Props) => {
-  const value = useSignInContext()[name];
-  const onChange = useSignInContext()[`onChange${capitalize(name) as 'Email' | 'Password'}`];
-  const error = useSignInContext().error;
+  const { value, onChange, error } = useSignInStore((store) => ({
+    value: store[name],
+    onChange: store[`onChange${capitalize(name) as 'Email' | 'Password'}`],
+    error: store.error,
+  }));
 
   return (
     <div className="mb-4">

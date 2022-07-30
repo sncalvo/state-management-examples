@@ -1,12 +1,11 @@
-import { SignInContextProvider, useSignInContext } from '../../contexts/SignInContext';
-import { useUserContext } from '../../contexts/UserContext';
+import { useSignInStore } from '../../contexts/SignInContext';
+import { useUserStore } from '../../contexts/UserContext';
 import { Card, Button } from '../atoms';
 import { TextInput } from '../molecules';
 
-const SignInFields = () => {
-  const [_, setUser] = useUserContext();
-  const values = useSignInContext();
-  const { email } = values;
+export const SignInForm = () => {
+  const setUser = useUserStore(({ setUser }) => setUser);
+  const email = useSignInStore(({ email }) => email);
 
   const onSubmit = () => setUser(email);
 
@@ -18,9 +17,3 @@ const SignInFields = () => {
     </Card>
   );
 };
-
-export const SignInForm = () => (
-  <SignInContextProvider>
-    <SignInFields />
-  </SignInContextProvider>
-);
