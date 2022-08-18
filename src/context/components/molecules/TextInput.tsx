@@ -12,7 +12,7 @@ function capitalize(word: 'email' | 'password') {
   return word.charAt(0).toUpperCase() + lower.slice(1);
 }
 
-const UnmemoedTextInput = ({ name, label }: Props) => {
+export const TextInput = ({ name, label }: Props) => {
   const value = useSignInStore()[name];
   const onChange = useSignInStore()[`onChange${capitalize(name) as 'Email' | 'Password'}`];
   const error = useSignInStore().error;
@@ -38,4 +38,4 @@ const UnmemoedTextInput = ({ name, label }: Props) => {
   );
 };
 
-export const TextInput = memo(UnmemoedTextInput);
+// export const TextInput = memo(UnmemoedTextInput);
